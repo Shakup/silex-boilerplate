@@ -2,7 +2,7 @@
     "name": "shakup/silex-boilerplate",
     "description": "A ready-to-use MVC structure based on Silex, Twig, Monolog and Doctrine",
     "require": {
-        "php": ">5.4",
+        "php": ">5.3",
         "twig/twig": "~1.18",
         "doctrine/dbal": "~2.5",
         "silex/silex": "~1.2",

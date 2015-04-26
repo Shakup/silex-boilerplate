@@ -1,0 +1,14 @@
+<?php
+define( 'PATH_ROOT', dirname( __DIR__ ) );
+define( 'PATH_APP', PATH_ROOT . '/app' );
+
+require PATH_ROOT . '/vendor/autoload.php';
+
+$app = new Silex\Application();
+
+$app['environment'] = getenv('ENVIRONMENT');
+
+require PATH_ROOT . '/config/' . $app['environment'] . '.php';
+require PATH_APP . '/app.php';
+
+$app['environment'] === 'production' ? $app['http_cache']->run() : $app->run();

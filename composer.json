@@ -1,0 +1,24 @@
+{
+    "name": "shakup/silex-boilerplate",
+    "description": "A ready-to-use MVC structure based on Silex, Monolog, Twig and Doctrine",
+    "require": {
+        "silex/silex": "~1.2",
+        "twig/twig": "~1.18",
+        "monolog/monolog": "~1.13",
+        "doctrine/dbal": "~2.5",
+        "php": ">5.4"
+    },
+     "autoload": {
+        "psr-4": {
+            "Controller\\": "app/controllers",
+            "Model\\": "app/models"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sébastien Decamme",
+            "email": "sebastien.decamme@gmail.com"
+        }
+    ]
+}

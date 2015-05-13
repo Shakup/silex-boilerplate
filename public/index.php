@@ -11,4 +11,4 @@ $app['environment'] = getenv('ENVIRONMENT');
 require PATH_ROOT . '/config/' . $app['environment'] . '.php';
 require PATH_APP . '/app.php';
 
-$app['environment'] === 'production' ? $app['http_cache']->run() : $app->run();
+$app['environment'] === 'production' && $app['cache.enable'] ? $app['http_cache']->run() : $app->run();

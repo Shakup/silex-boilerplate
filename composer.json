@@ -1,24 +1,23 @@
 {
-    "name": "shakup/silex-boilerplate",
-    "description": "A ready-to-use MVC structure based on Silex, Twig, Monolog and Doctrine",
+    "name": "worgnet/wotlk",
+    "description": "Worgnet WOTLK Website",
+    "authors": [
+        {
+            "name": "Sebastien Decamme",
+            "email": "sebastien.decamme@gmail.com"
+        }
+    ],
     "require": {
+        "silex/silex": "~1.3",
         "php": ">5.3",
         "twig/twig": "~1.18",
         "doctrine/dbal": "~2.5",
-        "silex/silex": "~1.2",
         "monolog/monolog": "~1.13"
     },
-     "autoload": {
+    "autoload": {
         "psr-4": {
             "Controller\\": "app/controllers",
             "Model\\": "app/models"
         }
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Sébastien Decamme",
-            "email": "sebastien.decamme@gmail.com"
-        }
-    ]
+    }
 }

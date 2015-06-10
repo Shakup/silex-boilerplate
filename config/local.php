@@ -11,7 +11,7 @@ $app['db.enable']    = true;
 $app['db.options']   = [
 	'driver'	=> 'pdo_mysql',
 	'host'		=> '127.0.0.1',
-	'dbname'	=> 'dbname',
+	'dbname'	=> 'name',
 	'user'		=> 'user',
-	'password'	=> 'passwd'
+	'password'	=> '****'
 ];

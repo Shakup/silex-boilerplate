@@ -1,0 +1,121 @@
+/* ==========================================================================
+   Simple Grid System
+   ========================================================================== */
+
+@mixin simple-grid($columns: 12, $gutter-h: 20px, $gutter-v: 20px){
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+
+	> *{
+		background-clip: padding-box;
+		width: (1 / $columns) * 100%;
+
+		@if $gutter-h > 0{
+			border-left: $gutter-h+px solid transparent;
+
+			&:nth-child(#{$columns}n+1){
+				border-left: none;
+			}
+		}
+		
+		@if $gutter-v > 0{
+			border-top: $gutter-h+px solid transparent;
+
+			&:nth-child(-n+#{$columns}){
+				border-top: none;
+			}
+		}
+
+	}
+}
+
+/* ==========================================================================
+   Advanced Grid System
+   ========================================================================== */
+
+$grid-columns: 12;
+$grid_device-extra-small: 480px;
+$grid_device-small: 768px;
+$grid_device-medium: 1024px;
+$grid_device-large: 1280px;
+
+.row{
+	display: flex;
+	flex-direction: row;
+
+	&.v-center{
+		align-items: center;
+	}
+
+	&.h-center{
+		justify-content: center;
+	}
+
+	&.wrap{
+		flex-wrap: wrap;
+	}
+
+	&.no-wrap{
+		flex-wrap: nowrap;
+	}
+}
+
+[class^="col-"]{
+	&.stretch{
+		flex: 1;
+	}
+
+	&.align-start{
+		align-self: flex-start;
+	}
+
+	&.align-center{
+		align-self: flex-center;
+	}
+
+	&.align-end{
+		align-self: flex-end;
+	}
+}
+
+@mixin col-hide{
+	display: none;
+}
+
+@mixin col-show{
+	display: flex;
+}
+
+@mixin gen-columns($size: ''){
+	@for $i from 1 through $grid-columns{
+		
+		@if $size == '' {
+			.col-#{$i}{
+				width: $i / $grid-columns * 100%;			
+			}
+		}
+		@else{
+			.col-#{$size}-#{$i}{
+				width: $i / $grid-columns * 100%;
+			}
+		}
+	}
+}
+
+$breakpoints : $grid_device-extra-small $grid_device-small $grid_device-medium $grid_device-large;
+$device-prefixes : xs s m l;
+
+@for $i from 1 through length($device-prefixes){
+	$device-prefix : nth($device-prefixes, $i);
+	$breakpoint    : nth($breakpoints, $i);
+
+	@media only screen and (min-width : $breakpoint + 1){
+		.col-#{$device-prefix}-hide{ @include col-hide; }
+		.col-#{$device-prefix}-show{ @include col-show; }
+		@include gen-columns($device-prefix);
+	}
+
+}
+
+@include gen-columns();
